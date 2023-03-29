@@ -64,6 +64,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   redirect() async {
-    Navigator.of(context).pushReplacementNamed(Routes.login);
+    Navigator.of(context).pushReplacementNamed(Routes.home);
   }
 }

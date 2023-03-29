@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Text("Login",style: TextStyle(color: AppColors.white,fontSize: 18.sp),),
             SizedBox(height: 80.h,),
-            CustomTextField(cont: email, hint: "Email",suffixicon:Icon(Icons.email,color: AppColors.hint,)),
+              CustomTextField(cont: email, hint: "Email",suffixicon:Icon(Icons.email,color: AppColors.hint,)),
             SizedBox(height: 10,),
             PasswordTextField(cont: pass, hint: "Password"),
               SizedBox(height: 10,),

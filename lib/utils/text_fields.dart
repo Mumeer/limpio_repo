@@ -86,3 +86,37 @@ class _PasswordTextFieldState extends  State<PasswordTextField> {
     );
   }
 }
+
+
+class SearchTextField extends StatefulWidget {
+  TextEditingController? cont;
+  String? hint;
+  SearchTextField({Key? key,required cont,required this.hint}) : super(key: key);
+
+  @override
+  State<SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<SearchTextField> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left:20.w,right: 20.w),
+      child: TextField(
+        controller: widget.cont,
+        decoration: InputDecoration(
+          hintText: widget.hint ?? "",
+          hintStyle: TextStyle(color: AppColors.hint,fontSize: 14.sp),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 2, color: AppColors.textFieldBorder)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  width: 2, color: AppColors.textFieldBorder)),
+          prefixIcon: Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+}

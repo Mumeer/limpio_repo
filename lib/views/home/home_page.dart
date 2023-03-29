@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:limpio/main.dart';
+import 'package:limpio/models/room.dart';
 import 'package:provider/provider.dart';
 import 'package:limpio/providers/user_provider.dart';
 import 'package:limpio/utils/app_colors.dart';
@@ -34,7 +36,12 @@ class _HomePageState extends State<HomePage> {
               onTap: (){
                 context.read<UserProvider>().logout(context);
               },
-              child: Icon(Icons.logout))
+              child: Wrap(
+                children: [
+                  Text("Add"),
+                  Icon(Icons.add),
+                ],
+              ))
         ],
       ),
       backgroundColor: AppColors.hint,
@@ -45,10 +52,33 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text("HomePage",style: TextStyle(color: AppColors.white,fontSize: 18.sp),),
+             showRoom(Room(name: "abc",bacgroundImage: "assets/background/background1.jpg"))
             ],),
         ),
       ),
     );
+  }
+
+  Widget showRoom(Room room){
+    return Container(
+      margin: EdgeInsets.all(20),
+      width: Appwidth.w,
+      height: Appheight.h/5,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+      image: DecorationImage(image: AssetImage(room.bacgroundImage.toString(),),fit: BoxFit.cover)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 10,top: 10),
+                padding:EdgeInsets.all(10),
+                  color: AppColors.white,
+                  child: Text(room.name.toString(),style: TextStyle(color: Colors.black),)),
+            ],
+          ),
+        ],
+      ),);
   }
 }
