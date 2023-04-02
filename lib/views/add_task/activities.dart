@@ -17,8 +17,23 @@ class Activities extends StatefulWidget {
 
 class _ActivitiesState extends State<Activities> {
 
-  List<String> activityNameTemplate = ["Pulwari lavello","Lavare Pavimento"];
-  List<String> activityName = ["Pulwari lavello","Lavare Pavimento"];
+  List<String> activityNameTemplate = [
+    "Pulwari lavello",
+    "Lavare Pavimento"];
+  List<String> activityName = [
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Pulwari lavello",
+    "Lavare Pavimento"];
 
   @override
   Widget build(BuildContext context) {
@@ -119,13 +134,16 @@ class _ActivitiesState extends State<Activities> {
           ),
         ),
       ),
-      bottomSheet: Padding(
-        padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+            color: AppColors.background,),
+        padding: EdgeInsets.only(left: 10,top:10,right: 10,bottom: 10),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(child: Container(
                 height: (Appheight / 20).h,
-                margin: EdgeInsets.only(left: 10, top: 10,right: 10),
+                margin: EdgeInsets.only(right: 10),
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: AppColors.white,
@@ -155,6 +173,7 @@ class _ActivitiesState extends State<Activities> {
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
+
     );
   }
 }

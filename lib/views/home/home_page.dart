@@ -62,7 +62,25 @@ class _HomePageState extends State<HomePage> {
             children: [
               showRoom(Room(
                   name: "abc",
-                  bacgroundImage: "assets/background/background1.jpg"))
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg")),
             ],
           ),
         ),
@@ -74,8 +92,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget showRoom(Room room) {
     return InkWell(
-      onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context){return ChoseFromList();}));
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return ChoseFromList();
+        }));
       },
       child: Container(
         margin: EdgeInsets.all(20),
@@ -109,7 +129,9 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return EditRoom(room: room,);
+                        return EditRoom(
+                          room: room,
+                        );
                       }));
                     },
                     child: Container(

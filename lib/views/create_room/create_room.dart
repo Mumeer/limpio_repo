@@ -23,8 +23,13 @@ class _CreateRoomState extends State<CreateRoom> {
           statusBarBrightness: Brightness.light, // For iOS (dark icons)
         ),
         elevation: 0,
+        leading: InkWell(
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+            child: Text("Ambienti")),
         automaticallyImplyLeading: false,
-        title: Text("Home"),
+        title: Text("CASSA GIALLI"),
         backgroundColor: AppColors.background,
         centerTitle: true,),
       backgroundColor: AppColors.background,
@@ -48,8 +53,14 @@ class _CreateRoomState extends State<CreateRoom> {
                   ),
                   style: TextStyle(color: Colors.black),
                 )),
-            Row(children: [
-              TextButton(onPressed: (){}, child: Text("Create New"))
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+              TextButton(
+                  style: TextButton.styleFrom(backgroundColor: AppColors.secondary),
+                  onPressed: (){}, child: Text("Create New",style: TextStyle(color: AppColors.white),)),
+                SizedBox(width: 15,)
             ],)
   ],
         ),
