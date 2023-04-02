@@ -24,7 +24,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               crossAxisAlignment: WrapCrossAlignment.center,
               direction: Axis.vertical,
               children: [
-                Icon(Icons.person,color: Colors.white,),
+                Icon(Icons.person_outline,color: Colors.white,),
                 Text( "Profile",style: TextStyle(color: AppColors.white),)
               ],
             ),
@@ -32,17 +32,5 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
         ),
       );
-    //   BottomNavigationBar(
-    //   backgroundColor: AppColors.black,
-    //   currentIndex: Provider.of<BottomNavBarProvider>(context).currentIndex,
-    //   onTap: (index) {
-    //     Provider.of<BottomNavBarProvider>(context, listen: false)
-    //         .updateCurrentIndex(index);
-    //   },
-    //   items: [
-    //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    //     BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.white,), label: 'Profile',),
-    //   ],
-    // );
   }
 }

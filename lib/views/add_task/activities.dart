@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,10 +15,7 @@ class Activities extends StatefulWidget {
 }
 
 class _ActivitiesState extends State<Activities> {
-
-  List<String> activityNameTemplate = [
-    "Pulwari lavello",
-    "Lavare Pavimento"];
+  List<String> activityNameTemplate = ["Pulwari lavello", "Lavare Pavimento"];
   List<String> activityName = [
     "Pulwari lavello",
     "Pulwari lavello",
@@ -33,7 +29,8 @@ class _ActivitiesState extends State<Activities> {
     "Pulwari lavello",
     "Pulwari lavello",
     "Pulwari lavello",
-    "Lavare Pavimento"];
+    "Lavare Pavimento"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,62 +67,76 @@ class _ActivitiesState extends State<Activities> {
           padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Text("Ativita da fare"),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Container(
-
-                height: (Appheight/6).h,
+                height: (Appheight / 6).h,
                 child: ListView.builder(
-                    // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
-                    //     childAspectRatio: 5/3,
-                    //   mainAxisSpacing: 8
-                    // ),
                     scrollDirection: Axis.horizontal,
                     itemCount: activityNameTemplate.length,
-                    itemBuilder: (context, index){
-                  return InkWell(
-                    onLongPress: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return EditActivities();
-                      }));
-                    },
-                    child: Wrap(
-                      children: [
-                        Container(
-                            height: (Appheight/6).h,
-
-                            width: (Appwidth/3).w,
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(10)
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onLongPress: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return EditActivities();
+                          }));
+                        },
+                        child: Wrap(
+                          children: [
+                            Container(
+                                height: (Appheight / 7).h,
+                                width: (Appwidth / 3.4).w,
+                                decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      activityNameTemplate[index][0],
+                                      style: TextStyle(fontSize: 35.sp),
+                                    ),
+                                    SizedBox(height: 3,),
+                                    Text(activityNameTemplate[index]),
+                                    SizedBox(height: 5,),
+                                  ],
+                                )),
+                            SizedBox(
+                              width: 8,
                             ),
-                            child: Center(child: Text(activityNameTemplate[index]))),
-                        SizedBox(width: 10,),
-                      ],
-                    ),
-                  );
-                }),
+                          ],
+                        ),
+                      );
+                    }),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Text("Elenco ativita"),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Expanded(
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
-                  childAspectRatio: 1,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8
-                  ),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 1,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8),
                     itemCount: activityName.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        width: (Appwidth/3).w,
-                        height: (Appheight/6).h,
+                        width: (Appwidth / 3).w,
+                        height: (Appheight / 6).h,
                         decoration: BoxDecoration(
                             color: AppColors.secondary,
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Center(child: Text(activityName[index])),
                       );
                     }),
@@ -135,45 +146,56 @@ class _ActivitiesState extends State<Activities> {
         ),
       ),
       bottomSheet: Container(
-        decoration: BoxDecoration(
-            color: AppColors.background,),
-        padding: EdgeInsets.only(left: 10,top:10,right: 10,bottom: 10),
+        padding: EdgeInsets.only(top: 7),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(child: Container(
-                height: (Appheight / 20).h,
-                margin: EdgeInsets.only(right: 10),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(5)),
-                child: TextField(
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: AppColors.white,
-                      border: InputBorder.none,
-                      hintText: "Pulire lavello"
-                  ),
-                  style: TextStyle(color: Colors.black),
-                )),),
+            Expanded(
+              child: Container(
+                  height: 40,
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: AppColors.white,
+                        border: InputBorder.none,
+                        hintText: "cerca ambiente...",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 20,
+                        )),
+                    style: TextStyle(color: Colors.black),
+                  )),
+            ),
             InkWell(
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context){return CreateRoom();}));
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return CreateRoom();
+                }));
               },
               child: Container(
-                padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                    color: Colors.blue[200],
-                    borderRadius: BorderRadius.circular(15)
-                  ),
-                  child: Icon(Icons.add)),
+                      color: AppColors.indigo1,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Icon(
+                    Icons.add,
+                    color: AppColors.white,
+                  )),
             ),
+            SizedBox(
+              width: 10,
+            )
           ],
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
-
     );
   }
 }

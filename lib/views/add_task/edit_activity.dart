@@ -53,81 +53,87 @@ class _EditActivitiesState extends State<EditActivities> {
       ),
       backgroundColor: AppColors.background,
       body: SizedBox.expand(
-        child: Column(
-          children: [
-            Text("Pulire lavello"),
-            Container(
-                width: size.width-30,
-                height: (Appheight / 20).h,
-                margin: EdgeInsets.only(left: 10, top: 10,right: 10),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: AppColors.blackGray,
-                    borderRadius: BorderRadius.circular(5)),
-                child: TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: AppColors.blackGray,
-                    border: InputBorder.none,
-                    hintText: "Pulire lavello"
-                  ),
-                  style: TextStyle(color: Colors.black),
-                )),
-            Container(
-                width: size.width-30,
-                margin: EdgeInsets.only(left: 10, top: 10,right: 10),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: AppColors.blackGray,
-                    borderRadius: BorderRadius.circular(5)),
-                child: TextField(
-                  maxLines: 4,
-                  // expands: true,
-                  decoration: InputDecoration(
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Row(children: [
+                SizedBox(width: 5,),
+                Text("Pulire lavello",style: TextStyle(fontSize: 20.sp),)]),
+              SizedBox(height: 10,),
+              Container(
+                  width: size.width-30,
+                  height: (Appheight / 20).h,
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                      color: Colors.white10,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: TextField(
+                    decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppColors.blackGray,
+                      fillColor: Colors.white10,
                       border: InputBorder.none,
-                      hintText: "description"
-                  ),
-                  style: TextStyle(color: Colors.black),
-                )),
-            Container(
-              margin: EdgeInsets.only(left: 10, top: 10,right: 10),
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Text("Ripetizione"),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 10, top: 10,right: 10),
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: DropdownButton<String>(
-                      style: TextStyle(color: Colors.white),
-                      isExpanded: true,
-                      value: _selectedItem,
-                      items: <String>['Repitions', 'Repitions1', 'Repitions2', 'Repitions3']
-                          .map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value,style: TextStyle(color: AppColors.black),),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _selectedItem = newValue!;
-                        });
-                      },
+                      hintText: "Pulire lavello",
+                      hintStyle: TextStyle(color: Colors.black54)
                     ),
-                  ),
-                ],
+                    style: TextStyle(color: Colors.white),
+                  )),
+              SizedBox(height: 10,),
+              Container(
+                  width: size.width-30,
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                      color: AppColors.blackGray,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: TextField(
+                    maxLines: 4,
+                    // expands: true,
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: AppColors.blackGray,
+                        border: InputBorder.none,
+                        hintText: "description"
+                    ),
+                    style: TextStyle(color: Colors.black),
+                  )),
+              Container(
+                margin: EdgeInsets.only(left: 10, top: 10,right: 10),
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Text("Ripetizione"),
+                  ],
+                ),
               ),
-            )
-          ],
+              Container(
+                margin: EdgeInsets.only(left: 10, top: 10,right: 10),
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: DropdownButton<String>(
+                        style: TextStyle(color: Colors.white),
+                        isExpanded: true,
+                        value: _selectedItem,
+                        items: <String>['Repitions', 'Repitions1', 'Repitions2', 'Repitions3']
+                            .map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value,style: TextStyle(color: AppColors.black),),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedItem = newValue!;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

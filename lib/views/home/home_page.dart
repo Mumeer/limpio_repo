@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         ),
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text("CASSA GIALLA"),
+        title: Text("i miei luoghi",style: TextStyle(fontSize: 14),),
         backgroundColor: AppColors.background,
         centerTitle: true,
         actions: [
@@ -60,26 +60,27 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 20,),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
               showRoom(Room(
-                  name: "abc",
+                  name: "CASA GIALLA",
                   bacgroundImage: "assets/background/background1.jpg")),
             ],
           ),
@@ -94,11 +95,11 @@ class _HomePageState extends State<HomePage> {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return ChoseFromList();
+          return ChoseFromList(roomName: room.name.toString(),);
         }));
       },
       child: Container(
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.only(left: 20,right: 20,bottom: 10),
         width: Appwidth.w,
         height: Appheight.h / 5,
         decoration: BoxDecoration(
@@ -145,6 +146,13 @@ class _HomePageState extends State<HomePage> {
                   ),
               ],
             ),
+            if (showEdit)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+              Icon(Icons.list,size: 45,color: AppColors.white,),
+                SizedBox(width: 20,),
+            ],)
           ],
         ),
       ),
