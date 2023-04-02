@@ -1,9 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:limpio/main.dart';
 import 'package:limpio/models/room.dart';
+import 'package:limpio/views/add_task/activities.dart';
+import 'package:limpio/views/add_task/chose_from_list.dart';
+import 'package:limpio/views/edit_room/edit_room.dart';
 import 'package:provider/provider.dart';
 import 'package:limpio/providers/user_provider.dart';
 import 'package:limpio/utils/app_colors.dart';
@@ -19,66 +21,111 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: AppColors.secondary,
+          statusBarColor: AppColors.background,
           statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
           statusBarBrightness: Brightness.light, // For iOS (dark icons)
         ),
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text("Home"),
-        backgroundColor: AppColors.secondary,
+        title: Text("CASSA GIALLA"),
+        backgroundColor: AppColors.background,
         centerTitle: true,
         actions: [
           InkWell(
-              onTap: (){
-                context.read<UserProvider>().logout(context);
+              onTap: () {
+                setState(() {
+                  showEdit = !showEdit;
+                });
               },
-              child: Wrap(
-                children: [
-                  Text("Add"),
-                  Icon(Icons.add),
-                ],
-              ))
+              child: Center(
+                child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Text(showEdit ? "fine" : "modifica"),
+                  ],
+                ),
+              )),
+          SizedBox(
+            width: 10,
+          )
         ],
       ),
-      backgroundColor: AppColors.hint,
+      backgroundColor: AppColors.background,
       body: SizedBox.expand(
-        child:
-        SingleChildScrollView(
+        child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-             showRoom(Room(name: "abc",bacgroundImage: "assets/background/background1.jpg"))
-            ],),
+              showRoom(Room(
+                  name: "abc",
+                  bacgroundImage: "assets/background/background1.jpg"))
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget showRoom(Room room){
-    return Container(
-      margin: EdgeInsets.all(20),
-      width: Appwidth.w,
-      height: Appheight.h/5,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-      image: DecorationImage(image: AssetImage(room.bacgroundImage.toString(),),fit: BoxFit.cover)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 10,top: 10),
-                padding:EdgeInsets.all(10),
-                  color: AppColors.white,
-                  child: Text(room.name.toString(),style: TextStyle(color: Colors.black),)),
-            ],
-          ),
-        ],
-      ),);
+  bool showEdit = false;
+
+  Widget showRoom(Room room) {
+    return InkWell(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context){return ChoseFromList();}));
+      },
+      child: Container(
+        margin: EdgeInsets.all(20),
+        width: Appwidth.w,
+        height: Appheight.h / 5,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+                image: AssetImage(
+                  room.bacgroundImage.toString(),
+                ),
+                fit: BoxFit.cover)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(left: 10, top: 10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Text(
+                      room.name.toString(),
+                      style: TextStyle(color: Colors.black),
+                    )),
+                if (showEdit)
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return EditRoom(room: room,);
+                      }));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10, top: 10),
+                      child: Icon(
+                        Icons.settings_outlined,
+                        color: AppColors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

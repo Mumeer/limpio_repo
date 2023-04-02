@@ -6,7 +6,7 @@ import 'package:limpio/utils/custom_loading_bar.dart';
 import 'package:limpio/utils/routes.dart';
 
 class CustomButton extends StatefulWidget {
-  int width;
+  double width;
   String text;
   VoidCallback ontap;
   CustomButton({Key? key,required this.width,required this.text,required this.ontap}) : super(key: key);

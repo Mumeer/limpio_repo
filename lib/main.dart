@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:limpio/views/add_task/activities.dart';
+import 'package:limpio/views/add_task/edit_activity.dart';
+import 'package:limpio/views/edit_room/edit_room.dart';
 import 'package:provider/provider.dart';
 import 'package:limpio/providers/bottom_nav_bar_provider.dart';
 import 'package:limpio/providers/user_provider.dart';
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
         );
       },
       child: SplashScreen(),
+      // child: Activities(),
     );
   }
 }
